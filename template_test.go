@@ -244,7 +244,7 @@ func testExecuteFunc(t *testing.T, template, expectedOutput string) {
 		return w.Write([]byte("zz"))
 	})
 
-	output := string(bb.Bytes())
+	output := bb.String()
 	if output != expectedOutput {
 		t.Fatalf("unexpected output for template=%q: %q. Expected %q", template, output, expectedOutput)
 	}
@@ -274,7 +274,7 @@ func TestExecute(t *testing.T) {
 func testExecute(t *testing.T, template, expectedOutput string) {
 	var bb bytes.Buffer
 	Execute(template, "{", "}", &bb, map[string]interface{}{"foo": "xxxx"})
-	output := string(bb.Bytes())
+	output := bb.String()
 	if output != expectedOutput {
 		t.Fatalf("unexpected output for template=%q: %q. Expected %q", template, output, expectedOutput)
 	}
@@ -304,7 +304,7 @@ func TestExecuteStd(t *testing.T) {
 func testExecuteStd(t *testing.T, template, expectedOutput string) {
 	var bb bytes.Buffer
 	ExecuteStd(template, "{", "}", &bb, map[string]interface{}{"foo": "xxxx"})
-	output := string(bb.Bytes())
+	output := bb.String()
 	if output != expectedOutput {
 		t.Fatalf("unexpected output for template=%q: %q. Expected %q", template, output, expectedOutput)
 	}
